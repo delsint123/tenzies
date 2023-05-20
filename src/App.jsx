@@ -3,6 +3,8 @@ import Die from "./components/Die"
 
 export default function App() {
 
+    const [dice, setDice] = React.useState(() => allNewDice())
+
     function allNewDice() {
         const randomDice = []
 
@@ -13,19 +15,15 @@ export default function App() {
         return randomDice
     }
 
-    console.log(allNewDice())
-
-    const dies = []
-
-    for(let i = 0; i < 10; i++) {
-        dies.push(<Die key={i} value="1" />)
-    }
+    const diceElements = dice.map((val, idx) => {
+        return <Die key={idx} value={val} />
+    })
 
     return (
         <main className="container">
             
             <div className="dies">
-                {dies}
+                {diceElements}
             </div>
         </main>
     )
