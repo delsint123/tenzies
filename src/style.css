@@ -4,4 +4,17 @@
 
 body {
     margin: 0;
+    background-color: #0B2434;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    margin: 30px 20px;
+    background-color: #F5F5F5;
+    height: 420px;
+    width: 420px;
+    border-radius: 10px;
 }
