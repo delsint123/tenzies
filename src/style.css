@@ -52,23 +52,57 @@ body {
 
 .die-face, .die-face-held {
     margin: 0;
+    padding: 5px;
     height: 45px;
     width: 45px;
     border-radius: 4px;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
     background-color: white;
     
-    font-weight: 700;
-    font-size: 24px;
+    /* font-weight: 700;
+    font-size: 24px; */
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
     align-items: center;
-    color: #2B283A;
     cursor: pointer;
 }
 
 .die-face-held {
     background-color: #59E391;
+}
+
+/* handle dice faces */
+.face-2, .face-3 {
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: nowrap;
+}
+
+.face-2 .dot:nth-of-type(2) {
+    align-self: flex-end;
+}
+
+.face-3 .dot:nth-of-type(2) {
+    align-self: center;
+}
+
+.face-3 .dot:nth-of-type(3) {
+    align-self: flex-end;
+}
+
+.face-5 .dot:nth-of-type(3) {
+    margin-left: 23%;
+    margin-right: 23%
+}
+
+
+.dot {
+    height: 8px;
+    width: 8px;
+    background-color: #2B283A;
+    border-radius: 50%;
+    margin: 2px
 }
 
 .roll-button {
