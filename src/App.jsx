@@ -5,6 +5,7 @@ import { nanoid } from "nanoid"
 export default function App() {
 
     const [dice, setDice] = React.useState(() => allNewDice())
+    const [tenzies, setTenzies] = React.useState(false)
 
     function generateNewDie() {
         return {
@@ -56,6 +57,17 @@ export default function App() {
             holdDice={holdDice}
         />
     })
+
+    React.useEffect(() => {
+        const checkVal = dice[0].value
+        const win = dice.every((die) => die.value === checkVal && die.isHeld)
+
+        if(win) {
+            setTenzies(true)
+            console.log("you won")
+        }
+        
+    }, [dice])
 
     return (
         <main className="container">
