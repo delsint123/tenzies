@@ -6,29 +6,54 @@ export default function App() {
 
     const [dice, setDice] = React.useState(() => allNewDice())
 
+    function generateNewDie() {
+        return {
+            value: Math.ceil(Math.random() * 6),
+            isHeld: false,
+            id: nanoid()
+        }
+    }
+    
     function allNewDice() {
         const randomDice = []
 
         for(let i = 0; i < 10; i++) {
-            randomDice.push({
-                    value: Math.ceil(Math.random() * 6),
-                    isHeld: false,
-                    id: nanoid()
-            })
+            randomDice.push(generateNewDie())
         }
 
         return randomDice
     }
 
-    function rollAllDice() {
+    //may remove
+    function resetDice() {
         setDice(allNewDice);
+    }
+
+    function rollDice() {
+        setDice((prevDice) => prevDice.map(die => {
+            return die.isHeld ?
+                die :
+                generateNewDie()
+        }))
+    }
+
+    function holdDice(dieId) {
+        setDice((prevDice) => prevDice.map((die) => {
+            if(die.id === dieId) {
+                return {...die, isHeld: !die.isHeld}
+            } else {
+                return die
+            }
+        }))
     }
 
     const diceElements = dice.map((die) => {
         return <Die 
             key={die.id} 
+            id={die.id}
             value={die.value} 
             isHeld={die.isHeld}
+            holdDice={holdDice}
         />
     })
 
@@ -41,7 +66,7 @@ export default function App() {
 
             <button 
                 className="roll-button"
-                onClick={rollAllDice}
+                onClick={rollDice}
             >
                 Roll
             </button>
