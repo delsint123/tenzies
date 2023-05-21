@@ -34,7 +34,7 @@ body {
     margin: 25px;
 }
 
-.die-face {
+.die-face, .die-face-held {
     margin: 0;
     height: 40px;
     width: 40px;
@@ -49,6 +49,10 @@ body {
     align-items: center;
     color: #2B283A;
     cursor: pointer;
+}
+
+.die-face-held {
+    background-color: #59E391;
 }
 
 .roll-button {
