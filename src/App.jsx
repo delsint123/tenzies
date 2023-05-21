@@ -7,6 +7,7 @@ export default function App() {
 
     const [dice, setDice] = React.useState(() => allNewDice())
     const [tenzies, setTenzies] = React.useState(false)
+    const [rolls, setRolls] = React.useState(0)
 
     function generateNewDie() {
         return {
@@ -32,6 +33,8 @@ export default function App() {
                 die :
                 generateNewDie()
         }))
+
+        setRolls((prevRolls) => prevRolls + 1)
     }
 
     function holdDice(dieId) {
@@ -47,6 +50,7 @@ export default function App() {
     function resetGame() {
         setDice(allNewDice);
         setTenzies(false);
+        setRolls(0)
     }
 
     const diceElements = dice.map((die) => {
@@ -77,6 +81,7 @@ export default function App() {
             <p className="instructions">Roll until all dice are the same. Click each 
                 die to freeze it at its current value between rolls.
             </p>
+            <p className="numberRolls">Rolls: {rolls}</p>
             
             <div className="dice-container">
                 {diceElements}

@@ -43,6 +43,12 @@ body {
     text-align: center;
 }
 
+.numberRolls {
+    margin: 0;
+    margin-top: 5px;
+    color:#4A4E74;
+}
+
 .dice-container {
     display: grid;
     grid-template: repeat(2, 1fr) / repeat(5, 1fr);
