@@ -48,6 +48,11 @@ export default function App() {
     }
 
     function resetGame() {
+        //set high score
+        if((JSON.parse(localStorage.getItem("highScore")) || Infinity) > rolls) {
+            localStorage.setItem("highScore", JSON.stringify(rolls))
+        }
+        
         setDice(allNewDice);
         setTenzies(false);
         setRolls(0)
@@ -81,6 +86,7 @@ export default function App() {
             <p className="instructions">Roll until all dice are the same. Click each 
                 die to freeze it at its current value between rolls.
             </p>
+            <p className="highScore">High Score: {JSON.parse(localStorage.getItem("highScore")) || 0}</p>
             <p className="numberRolls">Rolls: {rolls}</p>
             
             <div className="dice-container">
